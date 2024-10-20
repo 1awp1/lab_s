@@ -1,0 +1,34 @@
+2.1. Получение всех пользователей:
+curl http://localhost:8080/users 
+
+2.2. Получение пользователя по ID:
+curl http://localhost:8080/users/1 # Замените 1 на нужный ID
+
+2.3. Создание нового пользователя:
+curl -X POST -H "Content-Type: application/json" -d '{
+  "name": "John Doe",
+  "age": 30,
+  "email": "john.doe@example.com"
+}' http://localhost:8080/users
+
+2.4. Обновление пользователя по ID:
+curl -X PUT -H "Content-Type: application/json" -d '{
+  "name": "John Doe Updated",
+  "age": 35,
+  "email": "john.doe.updated@example.com"
+}' http://localhost:8080/users/1 # Замените 1 на нужный ID
+
+2.5. Удаление пользователя по ID:
+curl -X DELETE http://localhost:8080/users/1 # Замените 1 на нужный ID
+
+
+Проверка ошибок
+Получение несуществующего пользователя:
+  curl http://localhost:8080/users/9999 
+
+Создание пользователя с некорректными данными:
+  curl -X POST -H "Content-Type: application/json" -d '{
+    "name": "", 
+    "age": -1, 
+    "email": "invalid_email"
+  }' http://localhost:8080/users
